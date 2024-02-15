@@ -1,48 +1,55 @@
+import { useState, useEffect } from "react";
+import React from "react";
 import Card from "@/Components/Card";
-import Router, { useRouter } from "next/router";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
+
 export default function Home() {
   const [post, setPost] = useState<Array<any> | null>(null);
-  const [totalPages, settotalpages] = useState(0);
-  const router = useRouter();
-  const { page } = router.query;
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_SIZE = 10;
+
   const fetchData = async () => {
     try {
-      const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-
+      const res = await fetch(
+        `https://jsonplaceholder.typicode.com/posts?_limit=${PAGE_SIZE}&_page=${currentPage}`
+      );
       const data: any[] = await res.json();
-
-      console.log(data);
-
       setPost(data);
-
-      const totalposts = 100;
-      const totalPages = Math.ceil(totalposts / 10);
-      settotalpages(totalPages);
-
-      return data;
     } catch (error) {
-      throw new Error(`${error}`);
+      console.error("Error fetching data:", error);
     }
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
-  console.log(post);
+  }, [currentPage]);
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+
   return (
     <>
       <main className={`main-div`}>
-        {post?.map((sameer: any) => {
-          return (
-            <>
-              <React.Fragment key={sameer.id}>
-                <Card posts={sameer} />
-              </React.Fragment>
-            </>
-          );
-        })}
+        {post?.map((item: any) => (
+          <React.Fragment key={item.id}>
+            <Card posts={item} />
+          </React.Fragment>
+        ))}
+
+        <div>
+          <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+            Previous
+          </button>
+          <button onClick={handleNextPage} disabled={currentPage == 10}>
+            Next
+          </button>
+        </div>
       </main>
     </>
   );

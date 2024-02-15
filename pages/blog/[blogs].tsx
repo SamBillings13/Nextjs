@@ -24,7 +24,7 @@ const Page = () => {
 
   return (
     <div className={style.mainpara}>
-      <h3>Page Title</h3> {/* Add a title for the page */}
+      {/* Add a title for the page */}
       <div className={style.para}>
         {postId ? <Card posts={postId} /> : <p>Loading...</p>}{" "}
         {/* Conditionally render Card component */}
