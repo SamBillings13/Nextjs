@@ -1,4 +1,4 @@
-import style from "@/pages/blog/blog.module.css";
+import style from "@/pages/blog/blog.module.scss";
 import Card from "@/Components/Card";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
@@ -23,11 +23,15 @@ const Page = () => {
   }, [router.query.blogs]); // Run useEffect whenever router.query.blogs changes
 
   return (
-    <div className={style.mainpara}>
-      {/* Add a title for the page */}
-      <div className={style.para}>
-        {postId ? <Card posts={postId} /> : <p>Loading...</p>}{" "}
-        {/* Conditionally render Card component */}
+    <div className={style.main}>
+      <div className={style.maindiv}>
+        {/* Add a title for the page */}
+        <div className={style.carddiv}>
+          {postId ? <Card posts={postId} /> : <p>Loading...</p>}{" "}
+          {/* Conditionally render Card component */}
+        </div>
+
+        <div>{/* <Link href={-1} > </Link> */}</div>
       </div>
     </div>
   );

@@ -1,4 +1,7 @@
 .cardBody {
+  width: full;
+  padding: 20px;
+  gap: 20px;
   border: 2px solid red($color: #000000);
   display: flex;
   justify-content: center;
@@ -6,16 +9,63 @@
 }
 
 .cardmain {
-  width: 30%;
+  background-color: white;
+
   display: flex;
   flex-direction: column;
+
+  align-items: center;
+
+  border-radius: 7.5%;
+}
+.cardmain p {
+  display: inline;
+  color: blue;
+}
+
+.lineclamp {
+  text-align: justify;
+
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.lineclamp2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.btn {
+  text-transform: capitalize;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  width: 5rem;
+  display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10%;
-}
-.cardmain button {
-  height: 25px;
-  width: 150px;
+  border: 1px solid rgb(142, 193, 235);
   padding: 5px;
+  color: black;
   text-decoration: none;
+}
+.btn:hover {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(154, 154, 183),
+    skyblue
+  );
+  cursor: pointer;
+}
+
+.cardImg {
+  margin-top: 0.5rem;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 15px;
+}
+
+.cardImg Image :hover {
+  cursor: pointer;
 }
