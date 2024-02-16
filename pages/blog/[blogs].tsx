@@ -1,5 +1,6 @@
 import style from "@/pages/blog/blog.module.scss";
 import Card from "@/Components/Card";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
@@ -31,7 +32,11 @@ const Page = () => {
           {/* Conditionally render Card component */}
         </div>
 
-        <div>{/* <Link href={-1} > </Link> */}</div>
+        <div className={style.linkdiv}>
+          <Link href={router.asPath} onClick={() => router.back()}>
+            Go Back
+          </Link>
+        </div>
       </div>
     </div>
   );

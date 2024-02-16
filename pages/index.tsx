@@ -7,7 +7,7 @@ export default function Home() {
   const [post, setPost] = useState<Array<any> | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState<boolean>(false);
-  const PAGE_SIZE = 5;
+  const PAGE_SIZE = 4;
 
   const fetchData = async () => {
     try {
@@ -23,7 +23,6 @@ export default function Home() {
     }
   };
   {
-
   }
 
   useEffect(() => {
@@ -63,7 +62,7 @@ export default function Home() {
         </div>
 
         <div className={index.btndiv}>
-          <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+          <button onClick={handlePreviousPage} disabled={currentPage == 1}>
             Previous
           </button>
           <button onClick={handleNextPage} disabled={currentPage == 10}>

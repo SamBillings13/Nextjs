@@ -17,12 +17,14 @@ const Card = ({ posts }: any) => {
   return (
     <div className={card.cardBody}>
       <div className={card.cardmain}>
+        <h2>{posts.id}</h2>
         <Image
           loading="lazy"
           className={card.cardImg}
           src={staticimg}
           alt="not found"
         />
+
         <h3 className={card.lineclamp2}>
           {/* {objTitle.splice(0, 10).map((title, index) => (
             <h4 key={index}>{title}</h4>
@@ -37,13 +39,13 @@ const Card = ({ posts }: any) => {
 
         <p className={card.lineclamp}>{posts.body}</p>
 
-        <Link
+        {/* <Link
           className={card.btn}
           //give folder name in slug operation rather then file name
           href={`/blog/${posts.id}`}
         >
           click
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
